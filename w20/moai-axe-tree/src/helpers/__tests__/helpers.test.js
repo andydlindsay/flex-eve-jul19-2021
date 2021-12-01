@@ -1,4 +1,29 @@
-import { announceResult } from '../helpers'
+import { announceResult, assignRobotItem } from '../helpers';
+
+describe('tests for assignRobotItem', () => {
+
+  test('given that cheating is true, return the winning item', () => {
+    const cheating = true;
+    const playerSelection = 'Axe';
+
+    const actual = assignRobotItem(cheating, playerSelection);
+    const expected = 'Moai';
+
+    expect(actual).toBe(expected);
+  });
+
+  test('given that cheating is false, return a valid item', () => {
+    const cheating = false;
+    const playerSelection = 'Axe';
+
+    const actual = assignRobotItem(cheating, playerSelection);
+    const options = ['Moai', 'Axe', 'Tree'];
+
+    // expect(options.includes(actual)).toBe(true);
+    expect(options).toContain(actual);
+  });
+
+});
 
 describe('announceResult function', () => {
   let fakeState;
